@@ -48,6 +48,10 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 - What change did you make that finally gave the game a stable secret number?
 
+- The secret number kept changing in the original app because the state wasn’t stored properly and reset on each rerun.
+- Streamlit "reruns" rerun the whole script every time an interaction happens (like clicking the submit button), so variables not stored in the session state are recreated. Session state is a sort of memory w for storing values that need to survive the reruns.
+- To give the game a stable secret number, I use `st.session.state.secret` to store and persist the generated secret number.
+
 ---
 
 ## 5. Looking ahead: your developer habits
@@ -56,3 +60,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+- One strategy from this project I will use in future projects is separating the logic from the main program where appropriate.
+- Next time I work with AI on code, I want to try creating a custom agent to make it easier for me to prompt and for the AI to assist in a particular codebase/ project directory.
+- This project changed the way I think about AI generated code since I have to detail what changes the AI made in my commit messages.

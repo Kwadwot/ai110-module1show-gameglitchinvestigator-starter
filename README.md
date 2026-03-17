@@ -25,13 +25,14 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- The game is a number-guessing challenge where you try to guess a secret number (within a difficulty-based range) using higher/lower hints.
+- I found and fixed several bugs in the game: the secret number was resetting on each rerun because state wasn’t stored properly, the higher/lower hints were being compared as strings (so “5” could be treated as greater than “10”), submitting an invalid guess still counted as an attempt (making it feel like you had to click twice), and the “New Game” button didn’t reset the game state (status/score/history), so you couldn’t actually play again after winning or losing.
+- Fixed the state bug by relying on Streamlit's `st.session_state` to persist the secret number across reruns. Removed the string conversion in `check_guess` that was causing incorrect higher/lower comparisons (e.g., "5" > "10"), ensuring both guess and secret remain integers for correct numerical comparison. Moved attempt increment to only happen after a valid guess is parsed, eliminating the double-click behavior. Updated the "New Game" button to fully reset all game state (`status`, `score`, `history`, `attempts`, `secret`), allowing players to replay after winning or losing. Refactored all game logic into `logic_utils.py` and verified fixes with unit tests.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [![alt text](image.png)]
+
 
 ## 🚀 Stretch Features
 
