@@ -8,6 +8,14 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
 
+- One: (Developer Debug Info) The app does not display the recent guesses immediately after submission.
+- Two: (Developer Debug Info) Clicking the new game button does not reset the guess history as expected.
+- Three: When the user presses the enter key to submit a guess, the app does not
+  store the value or prompt the user.
+- The app shows opposite prompt for each incorrect guest, prompting "Go Higher" for guesses below the target and vice versa.
+- The number ranges for the difficulties are incorrect for normal and hard modes.
+- Normal mode displays range 1 to 20 but can have a target outside of that range.
+
 ---
 
 ## 2. How did you use AI as a teammate?
