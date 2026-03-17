@@ -12,9 +12,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Two: (Developer Debug Info) Clicking the new game button does not reset the guess history as expected.
 - Three: When the user presses the enter key to submit a guess, the app does not
   store the value or prompt the user.
-- The app shows opposite prompt for each incorrect guest, prompting "Go Higher" for guesses below the target and vice versa.
-- The number ranges for the difficulties are incorrect for normal and hard modes.
-- Normal mode displays range 1 to 20 but can have a target outside of that range.
+- Four: The app shows opposite prompt for each incorrect guest, prompting "Go Higher" for guesses below the target and vice versa.
+- Five: The number ranges for the difficulties are incorrect for normal and hard modes.
+- Six: Normal mode displays range 1 to 20 but can have a target outside of that range.
 
 ---
 
@@ -24,6 +24,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
+- Copilot suggested I modified the Normal difficulty range for the get_range_for_difficulty function from 1 to 100 to 1 to 20, which was wrong (should intuitively be 1 to 50). I made the correct modification myself afterward.
+- When examining the check_guess function for more bugs, Copilot noted the intentional string convertion and int to string comparison that can cause type mismatches between guess and secret. I found this to be a real bug and refactored appy.py and logic_utils.py with Copilot to fix the issue.
+
 ---
 
 ## 3. Debugging and testing your fixes
@@ -32,6 +35,10 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
+
+- I decided a bug was really fixed after running tests using pytest and also rerunning the app after each fix.
+- One test I ran using pytest was test_guess_9_vs_secret_10 which would have failed under the old string-based comparison, incorrectly returning "Too High" due to lexicographical ordering.
+- Copilot helped me design and understand the test_guess_9_vs_secret_10 test and similar tests by explaining the reasoning behind the "intentional glitch" of the string conversion of secret and comparison with int guess.
 
 ---
 
